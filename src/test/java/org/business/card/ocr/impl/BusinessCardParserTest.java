@@ -56,7 +56,7 @@ public class BusinessCardParserTest {
 	}
 	
 	@Test
-	public void parserTest() {
+	public void getContactInfoTest() {
 		
 		for ( int i=0; i<preProc.size(); i++ ) {
 			String preProcDocument = preProc.get( i );

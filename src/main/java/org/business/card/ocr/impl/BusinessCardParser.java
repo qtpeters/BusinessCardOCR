@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.business.card.ocr.IBusinessCardParser;
 import org.business.card.ocr.IContactInfo;
@@ -36,12 +38,13 @@ public class BusinessCardParser implements IBusinessCardParser {
 	// nameRegex would not work on Latin names because there are four.
 	private String nameRegex = "\\b\\w+\\s+\\w+\\b";
 	private String emailRegex = "\\b[A-Za-z0-9._%+-]+@.*[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b"; 
-	private String telephoneRegex = "^(?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:\\(\\s*("
-			+ "[2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*\\)|([2-9]1[02-9]"
-			+ "|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)?([2-9]1[02-9]"
-			+ "|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})(?:\\s*"
-			+ "(?:#|x\\.?|ext\\.?|extension)\\s*(\\d+))?$";
-
+	private String telephoneRegex = ".*?\\+?((\\s+)?\\(?(\\d{3})\\)?-?\\d{3}-\\d{4})\\b";
+	private Pattern telephonePattern;
+	
+	public BusinessCardParser() {
+		telephonePattern = Pattern.compile( telephoneRegex );
+	}
+	
 	public IContactInfo getContactInfo( String document ) {
 		
 		String name = "";
@@ -60,8 +63,9 @@ public class BusinessCardParser implements IBusinessCardParser {
 				email = line;
 			}
 			
-			if ( line.matches( telephoneRegex ) ) {
-				phone = line;
+			Matcher m = telephonePattern.matcher( line );
+			if ( m.matches() ) {
+				phone = m.group( 1 );
 			}
 		}
 		

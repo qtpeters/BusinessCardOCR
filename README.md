@@ -15,13 +15,15 @@ would like you to provide the implementation.
 # Interface Specification
 
 interface IContactInfo
-    String getName() : returns the full name of the individual (eg. John Smith, Susan Malick)
-        String getPhoneNumber() : returns the phone number formatted as a sequence of digits with no punctuation
-            String getEmailAddress() : returns the email address of the individual
+   * String getName() : returns the full name of the individual (eg. John Smith, Susan Malick)
+   * String getPhoneNumber() : returns the phone number formatted as a sequence of digits with no punctuation
+   * String getEmailAddress() : returns the email address of the individual
 
-            interface IBusinessCardParser
-                IContactInfo getContactInfo(String document)
-                [2] EXAMPLE INPUT DOCUMENTS AND THEIR EXPECTED RESULTS
+interface IBusinessCardParser
+   * IContactInfo getContactInfo(String document)
+
+
+# Test Data
 
 <pre>
                 Example 1:

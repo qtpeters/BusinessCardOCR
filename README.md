@@ -1,7 +1,9 @@
 
 # Building the software
-Install [https://maven.apache.org](https://maven.apache.org)
+* Install [https://maven.apache.org](https://maven.apache.org)
+* In project root, run: mvn clean install. 
 
+# Concept
 We’ve created a new smartphone app that enables users to snap a photo of a business card 
 and have the information from the card automatically extracted and added to their contact list. 
 We need you to write the component that parses the results of the optical character recognition (OCR) 
@@ -9,7 +11,8 @@ component in order to extract the name, phone number, and email address from the
 We have provided you with a basic interface specification [1] and a series of example inputs [2] and 
 would like you to provide the implementation.
 
-[1] INTERFACE SPECIFICATION
+
+# Interface Specification
 
 interface IContactInfo
     String getName() : returns the full name of the individual (eg. John Smith, Susan Malick)

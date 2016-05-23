@@ -2,6 +2,13 @@ package org.business.card.ocr.impl;
 
 import org.business.card.ocr.IContactInfo;
 
+/**
+ * Model object that represents a ContactInfo.
+ * It is immutable and has an overriden toString() method
+ * for convenience;
+ * 
+ * @author qtpeters
+ */
 public class ContactInfo implements IContactInfo {
 
 	private String name;

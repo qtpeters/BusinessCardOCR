@@ -23,6 +23,11 @@ public class BusinessCardParserTest {
 	private List<String> preProc = new ArrayList<>();
 	private List<String> postProc = new ArrayList<>();
 	
+	/**
+	 * setUp() reads in the example cases from a text file, parses them and 
+	 * stores the test data in lists for the unit test. 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		
@@ -55,6 +60,11 @@ public class BusinessCardParserTest {
 		} 
 	}
 	
+	/**
+	 * getContactInfoTest uses the data stored in setUp() to 
+	 * perform an automated test to verify the production code
+	 * produces the correct output.
+	 */
 	@Test
 	public void getContactInfoTest() {
 		
@@ -64,8 +74,7 @@ public class BusinessCardParserTest {
 			
 			IContactInfo contactInfo = parser.getContactInfo( preProcDocument );
 			String postProcDocument = contactInfo.toString();
-			System.out.println( postProcDocument );
-			//assertEquals( postProcDocument, postProcDocumentFromFile );
+			assertEquals( postProcDocument, postProcDocumentFromFile );
 		}
 	}
 }
